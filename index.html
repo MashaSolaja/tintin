@@ -11,10 +11,28 @@
   <meta name="theme-color" content="#000000">
 </head>
 <body>
-  <div class="container">
-    <h2 id="round">Round 1 of 8</h2>
+  <!-- SETTINGS SCREEN -->
+  <div class="container" id="settingsScreen">
+    <h2>Interval Timer</h2>
+
+    <label>
+      Session length (seconds)
+      <input id="sessionInput" type="number" min="5" step="5" value="30" />
+    </label>
+
+    <label>
+      Number of rounds
+      <input id="roundsInput" type="number" min="1" value="10" />
+    </label>
+
+    <button id="startButton">Start</button>
+  </div>
+
+  <!-- TIMER SCREEN -->
+  <div class="container hidden" id="timerScreen">
+    <h2 id="round">Round 1 of 10</h2>
     <div id="timer">30</div>
-    <button id="startStop">Start</button>
+    <button id="stopButton">Stop</button>
   </div>
 
   <script src="script.js"></script>
