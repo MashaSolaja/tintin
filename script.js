@@ -59,13 +59,8 @@ function populateRoundsSelector() {
 
 // UI helpers
 function showTimerScreen() {
-  settingsScreen.classList.add("hidden");
+  setupScreen.classList.add("hidden");
   timerScreen.classList.remove("hidden");
-}
-
-function showSettingsScreen() {
-  timerScreen.classList.add("hidden");
-  settingsScreen.classList.remove("hidden");
 }
 
 function updateUI() {
