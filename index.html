@@ -5,7 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interval Timer</title>
 
-  <!-- DaisyUI + Tailwind -->
+  <!-- Tailwind + DaisyUI theme config -->
+  <script>
+    tailwind.config = {
+      daisyui: {
+        themes: [
+          {
+            myCustomTheme: {
+              "primary": "#334155",
+              "secondary": "#FB923C",
+              "accent": "#FDE68A",
+              "neutral": "#1E293B",
+              "base-100": "#F8FAFC",
+              "info": "#3ABFF8",
+              "success": "#36D399",
+              "warning": "#FBBF24",
+              "error": "#EF4444"
+            }
+          }
+        ]
+      }
+    }
+  </script>
+
   <link
     href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css"
     rel="stylesheet"
@@ -16,7 +38,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="min-h-screen flex items-center justify-center bg-base-200">
+<body
+  class="theme-myCustomTheme min-h-screen flex items-center justify-center bg-base-100"
+>
 
   <!-- SETUP SCREEN -->
   <div id="setupScreen" class="w-full max-w-sm p-6 space-y-6">
@@ -24,9 +48,9 @@
     <!-- Session length -->
     <label class="block">
       <span class="label-text">Session length</span>
-      <div class="time-selectors mt-2">
+      <div class="flex items-center gap-2 mt-2">
         <select id="minutesSelect" class="select select-bordered w-full"></select>
-        <span class="mx-2 text-xl">:</span>
+        <span class="text-xl">:</span>
         <select id="secondsSelect" class="select select-bordered w-full"></select>
       </div>
     </label>
@@ -49,11 +73,8 @@
       </select>
     </label>
 
-    <!-- Start button -->
-    <button
-      id="startButton"
-      class="btn btn-primary w-full"
-    >
+    <!-- Start -->
+    <button id="startButton" class="btn btn-primary w-full">
       Start
     </button>
 
@@ -68,7 +89,7 @@
     <!-- Number countdown -->
     <div
       id="numberDisplay"
-      class="text-6xl font-bold hidden"
+      class="text-6xl font-bold hidden text-primary"
     ></div>
 
     <!-- Radial countdown -->
@@ -84,16 +105,10 @@
     </div>
 
     <!-- Round info -->
-    <div
-      id="roundDisplay"
-      class="text-lg"
-    ></div>
+    <div id="roundDisplay" class="text-lg"></div>
 
-    <!-- Stop button (optional but recommended) -->
-    <button
-      id="stopButton"
-      class="btn btn-outline mt-4"
-    >
+    <!-- Stop -->
+    <button id="stopButton" class="btn btn-secondary mt-4">
       Stop
     </button>
 
