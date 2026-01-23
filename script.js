@@ -7,12 +7,13 @@ let timerId = null;
 let running = false;
 
 // Elements
-const settingsScreen = document.getElementById("settingsScreen");
+const setupScreen = document.getElementById("setupScreen");
 const timerScreen = document.getElementById("timerScreen");
 
 const minutesSelect = document.getElementById("minutesSelect");
 const secondsSelect = document.getElementById("secondsSelect");
 const roundsSelect = document.getElementById("roundsSelect");
+const displayModeSelect = document.getElementById("displayModeSelect");
 
 const timerEl = document.getElementById("timer");
 const roundEl = document.getElementById("round");
@@ -20,9 +21,11 @@ const roundEl = document.getElementById("round");
 const startButton = document.getElementById("startButton");
 const stopButton = document.getElementById("stopButton");
 
-const displayModeSelect = document.getElementById("displayModeSelect");
 const numberDisplay = document.getElementById("numberDisplay");
 const radialContainer = document.getElementById("radialContainer");
+const radialProgress = document.getElementById("radialProgress");
+const timeDisplay = document.getElementById("timeDisplay");
+const roundDisplay = document.getElementById("roundDisplay");
 
 function populateTimeSelectors() {
   // Minutes: 0 → 10
