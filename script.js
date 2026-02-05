@@ -27,6 +27,25 @@ let timeRemaining = interval;
 let timerId = null;
 let running = false;
 
+const completionModal = document.getElementById("completionModal");
+const doneButton = document.getElementById("doneButton");
+
+function resetApp() {
+  running = false;
+  clearInterval(timerId);
+
+  timerScreen.classList.add("hidden");
+  settingsScreen.classList.remove("hidden");
+
+  currentRound = 1;
+  timeRemaining = interval;
+}
+
+doneButton.addEventListener("click", () => {
+  completionModal.close();
+  resetApp();
+});
+
 function playBeep() {
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
   const oscillator = ctx.createOscillator();
