@@ -238,7 +238,6 @@ function showIntroThenSetup() {
 
   // After 2.5 seconds, move to setup
   setTimeout(() => {
-    introScreen.classList.add("hidden");
     showSetupScreen();
   }, 2500);
 }
