@@ -146,9 +146,12 @@ function updateUI() {
   roundDisplay.textContent = `Round ${currentRound} of ${totalRounds}`;
 
   const isFinalSeconds = timeRemaining <= 3;
+
+  // Adding beep
   if (isFinalSeconds && timeRemaining > 0) {
     playBeep();
   }
+  
   // Background color change
   if (isFinalSeconds) {
     document.body.classList.add("bg-error");
@@ -158,10 +161,20 @@ function updateUI() {
     document.body.classList.remove("bg-error");
   }
 
-  // Color change for last 3 seconds
-  const colorClass = isFinalSeconds ? "text-error" : "text-primary";
-  numberDisplay.className = `text-6xl font-bold ${colorClass}`;
-  radialProgress.className = `radial-progress ${colorClass}`;
+  // Text & dial color for visibility
+  if (isFinalSeconds) {
+    numberDisplay.classList.remove("text-primary");
+    numberDisplay.classList.add("text-base-100");
+  
+    radialProgress.classList.remove("text-primary");
+    radialProgress.classList.add("text-base-100");
+  } else {
+    numberDisplay.classList.remove("text-base-100");
+    numberDisplay.classList.add("text-primary");
+  
+    radialProgress.classList.remove("text-base-100");
+    radialProgress.classList.add("text-primary");
+  }
 
   if (displayModeSelect.value === "number") {
     numberDisplay.textContent = timeText;
