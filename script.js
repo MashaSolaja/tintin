@@ -129,6 +129,9 @@ function startTimer() {
 function stopTimer() {
   running = false;
   clearInterval(timerId);
+  document.body.classList.add("bg-base-200");
+  document.body.classList.remove("bg-error");
+
   showSetupScreen();
 }
 
@@ -143,6 +146,17 @@ function updateUI() {
   roundDisplay.textContent = `Round ${currentRound} of ${totalRounds}`;
 
   const isFinalSeconds = timeRemaining <= 3;
+  if (isFinalSeconds && timeRemaining > 0) {
+    playBeep();
+  }
+  // Background color change
+  if (isFinalSeconds) {
+    document.body.classList.add("bg-error");
+    document.body.classList.remove("bg-base-200");
+  } else {
+    document.body.classList.add("bg-base-200");
+    document.body.classList.remove("bg-error");
+  }
 
   // Color change for last 3 seconds
   const colorClass = isFinalSeconds ? "text-error" : "text-primary";
