@@ -198,3 +198,22 @@ stopButton.addEventListener("click", stopTimer);
 
 // Init
 populateSelectors();
+
+const introScreen = document.getElementById("introScreen");
+
+function showIntroThenSetup() {
+  setupScreen.classList.add("hidden");
+  timerScreen.classList.add("hidden");
+
+  // Show intro
+  introScreen.classList.remove("hidden");
+
+  // After 2.5 seconds, move to setup
+  setTimeout(() => {
+    introScreen.classList.add("hidden");
+    showSetupScreen();
+  }, 2500);
+}
+
+// Run on page load
+showIntroThenSetup();
