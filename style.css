@@ -13,6 +13,14 @@ body {
   text-align: center;
 }
 
+.tap-press {
+  transition: transform 0.12s ease-out;
+}
+
+.tap-press:active {
+  transform: scale(0.97);
+}
+
 #timer {
   font-size: 96px;
   margin: 20px 0;
