@@ -27,6 +27,23 @@ let timeRemaining = interval;
 let timerId = null;
 let running = false;
 
+function playBeep() {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = ctx.createOscillator();
+  const gain = ctx.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = 880; // pleasant beep
+  gain.gain.value = 0.05; // quiet, non-intrusive
+
+  oscillator.connect(gain);
+  gain.connect(ctx.destination);
+
+  oscillator.start();
+  oscillator.stop(ctx.currentTime + 0.15);
+}
+
+
 /* -----------------------------
    Populate selectors
 ------------------------------ */
