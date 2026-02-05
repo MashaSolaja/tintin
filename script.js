@@ -35,7 +35,7 @@ function resetApp() {
   clearInterval(timerId);
 
   timerScreen.classList.add("hidden");
-  settingsScreen.classList.remove("hidden");
+  setupScreen.classList.remove("hidden");
 
   currentRound = 1;
   timeRemaining = interval;
