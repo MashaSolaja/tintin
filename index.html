@@ -96,24 +96,24 @@
   <!-- TIMER SCREEN -->
   <div
     id="timerScreen"
-    class="screen fixed inset-0 hidden"
+    class="screen fixed inset-0 hidden flex flex-col items-center justify-center gap-6"
   >
 
     <!-- Number countdown -->
     <div
       id="numberDisplay"
-      class="hidden font-bold text-primary text-[20vh] leading-none select-none"
+      class="hidden font-bold text-primary text-[25vh] leading-none select-none text-center"
     ></div>
 
     <!-- Radial countdown -->
-    <div id="radialContainer" class="hidden">
+    <div id="radialContainer" class="hidden flex items-center justify-center">
       <div
         id="radialProgress"
         class="radial-progress text-primary"
         style="--value:100; --size:70vmin; --thickness:14px;"
         role="progressbar"
       >
-        <span id="timeDisplay" class="text-[10vh] font-bold select-none"></span>
+        <span id="timeDisplay" class="text-[10vh] font-bold select-none text-center"></span>
       </div>
     </div>
 
