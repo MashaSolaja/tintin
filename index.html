@@ -40,14 +40,14 @@
 
 <body
   data-theme="valentine"
-  class="min-h-screen flex items-center justify-center bg-base-200"
+  class="min-h-screen bg-base-200"
 >
 
 
   <!-- INTRO SCREEN -->
   <div
     id="introScreen"
-    class="w-full h-screen flex flex-col items-center justify-center bg-base-200 animate-intro"
+    class="fixed inset-0 flex items-center justify-center bg-base-200 z-50"
   >
     <h1 class="text-4xl font-bold text-primary mb-4">
       For my Tintin 🧸🩷 
@@ -64,7 +64,7 @@
   </div>
   
   <!-- SETUP SCREEN -->
-  <div id="setupScreen" class="w-full max-w-sm p-6 space-y-6">
+  <div id="setupScreen" class="screen fixed inset-0 hidden">
 
     <!-- Session length -->
     <label class="block">
@@ -107,7 +107,7 @@
   <!-- TIMER SCREEN -->
   <div
     id="timerScreen"
-    class="hidden w-full h-screen flex flex-col items-center justify-center"
+    class="screen fixed inset-0 hidden"
   >
 
     <!-- Number countdown -->
