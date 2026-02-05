@@ -112,6 +112,7 @@ function showTimerScreen() {
 
 function showSetupScreen() {
   introScreen.classList.add("hidden");
+  introScreen.style.display = "none";
   timerScreen.classList.add("hidden");
   setupScreen.classList.remove("hidden");
 }
