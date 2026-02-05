@@ -105,11 +105,13 @@ function populateSelectors() {
    Screen helpers
 ------------------------------ */
 function showTimerScreen() {
+  introScreen.classList.add("hidden");
   setupScreen.classList.add("hidden");
   timerScreen.classList.remove("hidden");
 }
 
 function showSetupScreen() {
+  introScreen.classList.add("hidden");
   timerScreen.classList.add("hidden");
   setupScreen.classList.remove("hidden");
 }
