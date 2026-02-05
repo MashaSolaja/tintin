@@ -6,24 +6,11 @@
   <title>Interval Timer</title>
 
   <!-- Tailwind + DaisyUI theme config -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       daisyui: {
-        themes: [
-          {
-            myCustomTheme: {
-              "primary": "#334155",
-              "secondary": "#FB923C",
-              "accent": "#FDE68A",
-              "neutral": "#1E293B",
-              "base-100": "#F8FAFC",
-              "info": "#3ABFF8",
-              "success": "#36D399",
-              "warning": "#FBBF24",
-              "error": "#EF4444"
-            }
-          }
-        ]
+        themes: ["valentine"]
       }
     }
   </script>
@@ -33,9 +20,11 @@
     rel="stylesheet"
     type="text/css"
   />
-  <script src="https://cdn.tailwindcss.com"></script>
 
-  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css"
+    rel="stylesheet"
+  />
 </head>
 
 <body
@@ -138,8 +127,6 @@
 
   </div>
 
-  <script src="script.js"></script>
-
   <!-- COMPLETION MODAL -->
   <dialog id="completionModal" class="modal backdrop-blur-sm transition-all duration-300">
     <div class="modal-box text-center space-y-4">
@@ -170,6 +157,6 @@
     </div>
   </dialog>
 
-  
+  <script src="script.js"></script>
 </body>
 </html>
