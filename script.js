@@ -43,6 +43,12 @@ function playBeep() {
   oscillator.stop(ctx.currentTime + 0.15);
 }
 
+function showCompletionModal() {
+  const modal = document.getElementById("completionModal");
+  if (modal) {
+    modal.showModal();
+  }
+}
 
 /* -----------------------------
    Populate selectors
@@ -117,6 +123,7 @@ function startTimer() {
       currentRound++;
       if (currentRound > totalRounds) {
         stopTimer();
+        showCompletionModal();
         return;
       }
       timeRemaining = interval;
