@@ -84,13 +84,13 @@
   <!-- TIMER SCREEN -->
   <div
     id="timerScreen"
-    class="hidden flex flex-col items-center justify-center space-y-6"
+    class="hidden w-full h-screen flex flex-col items-center justify-center"
   >
 
     <!-- Number countdown -->
     <div
       id="numberDisplay"
-      class="text-6xl font-bold hidden text-primary"
+      class="hidden font-bold text-primary text-[20vh] leading-none select-none"
     ></div>
 
     <!-- Radial countdown -->
@@ -98,10 +98,10 @@
       <div
         id="radialProgress"
         class="radial-progress text-primary"
-        style="--value:100; --size:12rem; --thickness:10px;"
+        style="--value:100; --size:70vmin; --thickness:14px;"
         role="progressbar"
       >
-        <span id="timeDisplay" class="text-3xl font-bold"></span>
+        <span id="timeDisplay" class="text-[10vh] font-bold select-none"></span>
       </div>
     </div>
 
