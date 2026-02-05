@@ -239,6 +239,7 @@ function showIntroThenSetup() {
 
   // After 2.5 seconds, move to setup
   setTimeout(() => {
+    console.log("Switching to setup");
     showSetupScreen();
   }, 2500);
 }
