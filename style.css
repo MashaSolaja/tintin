@@ -67,6 +67,21 @@ select {
   50% { transform: scale(1.1); }
 }
 
+@keyframes introFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-intro {
+  animation: introFade 1.2s ease-out;
+}
+
 .text-error.pulse {
   animation: pulse-fast 0.8s infinite;
 }
