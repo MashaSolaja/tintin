@@ -10,6 +10,16 @@ body {
   overflow-x: hidden;
 }
 
+@keyframes floatSoft {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-soft {
+  animation: floatSoft 3s ease-in-out infinite;
+}
+
 @keyframes fadeInScale {
   from {
     opacity: 0;
