@@ -140,17 +140,24 @@ function startTimer() {
 
   timerId = setInterval(() => {
     timeRemaining--;
-
+  
+    // 🔔 Beep during last 3 seconds
+    if (timeRemaining > 0 && timeRemaining <= 3) {
+      playBeep();
+    }
+  
     if (timeRemaining <= 0) {
       currentRound++;
+  
       if (currentRound > totalRounds) {
         stopTimer();
         showCompletionModal();
         return;
       }
+  
       timeRemaining = interval;
     }
-
+  
     updateUI();
   }, 1000);
 }
