@@ -27,6 +27,8 @@ let timeRemaining = interval;
 let timerId = null;
 let running = false;
 
+let audioCtx = null;
+
 const completionModal = document.getElementById("completionModal");
 const doneButton = document.getElementById("doneButton");
 
@@ -123,6 +125,15 @@ function showSetupScreen() {
 function startTimer() {
   if (running) return;
 
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  
+  // Important for mobile browsers
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+
   const minutes = parseInt(minutesSelect.value, 10);
   const seconds = parseInt(secondsSelect.value, 10);
 
@@ -182,11 +193,6 @@ function updateUI() {
   roundDisplay.textContent = `Round ${currentRound} of ${totalRounds}`;
 
   const isFinalSeconds = timeRemaining <= 3;
-
-  // Adding beep
-  if (isFinalSeconds && timeRemaining > 0) {
-    playBeep();
-  }
   
   // Background color change
   if (isFinalSeconds) {
