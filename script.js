@@ -151,6 +151,7 @@ function startTimer() {
 
   timerId = setInterval(() => {
     timeRemaining--;
+    console.log("Time:", timeRemaining, "Round:", currentRound);
   
     // 🔔 Beep during last 3 seconds
     if (timeRemaining > 0 && timeRemaining <= 3) {
