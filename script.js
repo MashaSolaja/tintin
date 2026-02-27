@@ -49,19 +49,27 @@ doneButton.addEventListener("click", () => {
 });
 
 function playBeep() {
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const oscillator = ctx.createOscillator();
-  const gain = ctx.createGain();
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
 
-  oscillator.type = "sine";
-  oscillator.frequency.value = 880; // pleasant beep
-  gain.gain.value = 0.05; // quiet, non-intrusive
+  const oscillator = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  oscillator.type = "square";      // stronger sound
+  oscillator.frequency.value = 1800; // cuts through music better
 
   oscillator.connect(gain);
-  gain.connect(ctx.destination);
+  gain.connect(audioCtx.destination);
 
-  oscillator.start();
-  oscillator.stop(ctx.currentTime + 0.15);
+  const now = audioCtx.currentTime;
+
+  gain.gain.setValueAtTime(0, now);
+  gain.gain.linearRampToValueAtTime(1.0, now + 0.005); // MAX volume
+  gain.gain.linearRampToValueAtTime(0, now + 0.25);    // fade out
+
+  oscillator.start(now);
+  oscillator.stop(now + 0.25);
 }
 
 function showCompletionModal() {
