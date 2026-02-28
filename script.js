@@ -57,7 +57,7 @@ function playBeep() {
   const gain = audioCtx.createGain();
 
   oscillator.type = "square";      // stronger sound
-  oscillator.frequency.value = 1800; // cuts through music better
+  oscillator.frequency.value = 1000; // cuts through music better
 
   oscillator.connect(gain);
   gain.connect(audioCtx.destination);
