@@ -27,10 +27,30 @@ let timeRemaining = interval;
 let timerId = null;
 let running = false;
 
+let wakeLock = null;
+
 let audioCtx = null;
 
 const completionModal = document.getElementById("completionModal");
 const doneButton = document.getElementById("doneButton");
+
+//wakeLock Function
+async function enableWakeLock() {
+  try {
+    if ("wakeLock" in navigator) {
+      wakeLock = await navigator.wakeLock.request("screen");
+      console.log("Wake lock active");
+
+      wakeLock.addEventListener("release", () => {
+        console.log("Wake lock released");
+      });
+    } else {
+      console.log("Wake lock not supported");
+    }
+  } catch (err) {
+    console.log("Wake lock failed:", err);
+  }
+}
 
 function resetApp() {
   running = false;
@@ -156,6 +176,7 @@ function startTimer() {
   timeRemaining = interval;
   currentRound = 1;
   running = true;
+  enableWakeLock();
 
   showTimerScreen();
   updateUI();
@@ -197,6 +218,11 @@ function startTimer() {
 
 function stopTimer() {
   running = false;
+  if (wakeLock) {
+    wakeLock.release();
+    wakeLock = null;
+  }
+
   clearInterval(timerId);
   document.body.classList.add("bg-base-200");
   document.body.classList.remove("bg-error");
