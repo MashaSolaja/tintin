@@ -48,7 +48,9 @@ doneButton.addEventListener("click", () => {
   resetApp();
 });
 
-function playBeep() {
+function playBeep({ duration = 0.2, volume = 1.0, frequency = 1000 } = {}) {
+  if (!audioCtx) return;
+
   if (audioCtx.state === "suspended") {
     audioCtx.resume();
   }
@@ -56,8 +58,8 @@ function playBeep() {
   const oscillator = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
 
-  oscillator.type = "square";      // stronger sound
-  oscillator.frequency.value = 1000; // cuts through music better
+  oscillator.type = "square";
+  oscillator.frequency.value = frequency;
 
   oscillator.connect(gain);
   gain.connect(audioCtx.destination);
@@ -65,12 +67,13 @@ function playBeep() {
   const now = audioCtx.currentTime;
 
   gain.gain.setValueAtTime(0, now);
-  gain.gain.linearRampToValueAtTime(1.0, now + 0.005); // MAX volume
-  gain.gain.linearRampToValueAtTime(0, now + 0.25);    // fade out
+  gain.gain.linearRampToValueAtTime(volume, now + 0.01);
+  gain.gain.linearRampToValueAtTime(0, now + duration);
 
   oscillator.start(now);
-  oscillator.stop(now + 0.25);
+  oscillator.stop(now + duration);
 }
+
 
 function showCompletionModal() {
   const modal = document.getElementById("completionModal");
@@ -162,9 +165,19 @@ function startTimer() {
     console.log("Time:", timeRemaining, "Round:", currentRound);
   
     // 🔔 Beep during last 3 seconds
-    if (timeRemaining > 0 && timeRemaining <= 3) {
-      playBeep();
+    // 🔔 Custom beeps for 3, 2, 1
+    if (timeRemaining === 3) {
+      playBeep({ duration: 0.15, volume: 0.6 });
     }
+    
+    if (timeRemaining === 2) {
+      playBeep({ duration: 0.15, volume: 0.6 });
+    }
+    
+    if (timeRemaining === 1) {
+      playBeep({ duration: 0.35, volume: 1.0 }); // 💥 final beep
+    }
+
   
     if (timeRemaining <= 0) {
       currentRound++;
