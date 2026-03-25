@@ -129,7 +129,7 @@ function populateSelectors() {
     const option = document.createElement("option");
     option.value = i;
     option.textContent = i;
-    if (i === 10) option.selected = true;
+    if (i === 12) option.selected = true;
     roundsSelect.appendChild(option);
   }
 }
